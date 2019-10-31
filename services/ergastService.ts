@@ -19,9 +19,51 @@ interface ICircuito{
 }
 
 
+
+interface IDriver{
+  driverId: string;
+  permanentNumber: string;
+  code: string;
+  url: string;
+  givenName: string;
+  familyName: string;
+  dateOfBirth: string;
+  nationality: string;
+}
+
+
+interface IConstructors{
+  constructorId: string;
+  url: string;
+  name: string;
+  nationality: string;
+}
+
+interface IDriverStandings{
+  position: string;
+  positionText: string;
+  points: string;
+  wins: string;
+  Driver: IDriver;
+  Constructors: Array<IConstructors>;
+}
+
+
 interface IErgastService {
-  getDrivers(): angular.IPromise<any>;
-  getDriverDetails(id: string): angular.IPromise<any>;
+  /**
+   * Peticion GET a servicio REST
+   * @return Promesa con array de IDriverStandings
+   */
+  getDrivers(): angular.IPromise<IDriverStandings>;
+
+
+  /**
+   * Peticion GET a servicio REST
+   * @return Promesa con array de IDriverStandings
+   */
+  getDriverDetails(id: string): angular.IPromise<IDriverStandings>;
+
+  
   getDriverRaces(id: string): angular.IPromise<any>;
 
   /**
@@ -75,8 +117,5 @@ class ErgastService implements IErgastService {
         return response.data.MRData.RaceTable.Races;
       });
   }
-
-
-
 
 }

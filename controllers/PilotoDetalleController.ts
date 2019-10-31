@@ -4,9 +4,9 @@ interface IPilotoControllerScope extends angular.IScope {
 
 class PilotoDetalleController implements ng.IController {
   public vm: PilotoDetalleController;
-  public driver: any;
+  public driver: IDriverStandings;
   public static $inject = ["$scope", "piloto"];
-  constructor(private $scope: IPilotoControllerScope, piloto: any) {
+  constructor(private $scope: IPilotoControllerScope, piloto: IDriverStandings) {
     $scope.vm = this;
     this.driver = piloto;
   }
