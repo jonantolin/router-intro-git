@@ -49,6 +49,36 @@ interface IDriverStandings{
 }
 
 
+/*
+"Races":[ 
+{ 
+    "season":"2017",
+    "round":"1",
+    "url":"https:\/\/en.wikipedia.org\/wiki\/2017_Australian_Grand_Prix",
+    "raceName":"Australian Grand Prix",
+    "Circuit":{  },
+    "date":"2017-03-26",
+    "time":"05:00:00Z",
+    "Results":[ 
+      { 
+          "number":"14",
+          "position":"14",
+          "positionText":"R",
+          "points":"0",
+          "Driver":{  },
+          "Constructor":{  },
+          "grid":"12",
+          "laps":"50",
+          "status":"Vibrations",
+          "FastestLap":{  }
+      }
+    ]
+},
+
+
+
+*/
+
 interface IErgastService {
   /**
    * Peticion GET a servicio REST
@@ -63,7 +93,7 @@ interface IErgastService {
    */
   getDriverDetails(id: string): angular.IPromise<IDriverStandings>;
 
-  
+
   getDriverRaces(id: string): angular.IPromise<any>;
 
   /**
