@@ -5,7 +5,8 @@ app
     .controller("pilotosController", PilotosController)
     .controller("pilotoCarrerasController", PilotoCarrerasController)
     .controller("pilotoDetalleController", PilotoDetalleController)
-    .controller("pilotoController", PilotoController);
+    .controller("pilotoController", PilotoController)
+    .controller("circuitosController", CircuitosController);
 app.config([
     "$urlRouterProvider",
     "$stateProvider",
@@ -64,6 +65,17 @@ app.config([
             .state("app.leeme", {
             url: "/leeme",
             templateUrl: "views/leeme.html"
+        })
+            .state("app.circuito", {
+            url: "/circuitos",
+            templateUrl: "views/circuitos.html",
+            controller: CircuitosController,
+            resolve: {
+                circuitosMundial: [
+                    "ergastService",
+                    function (ergastService) { return ergastService.getCircuitos(); }
+                ]
+            }
         });
     }
 ]);

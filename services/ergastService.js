@@ -13,6 +13,15 @@ var ErgastService = (function () {
                 return response.data.MRData.StandingsTable.StandingsLists[0].DriverStandings[0];
             });
         };
+        this.getCircuitos = function () {
+            var url = 'http://ergast.com/api/f1/circuits.json';
+            console.log("ErgastService getCirccuitos");
+            return _this.http.get(url).then(function (response) {
+                console.debug('llamada correcta %o', response.data['MRData'].CircuitTable.Circuits);
+                var dataJson = response.data['MRData'].CircuitTable.Circuits;
+                return dataJson;
+            });
+        };
         this.getDriverRaces = function (id) {
             return _this.http
                 .get("http://ergast.com/api/f1/2017/drivers/" + id + "/results.json")

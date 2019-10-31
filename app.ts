@@ -6,7 +6,8 @@ app
   .controller("pilotosController", PilotosController)
   .controller("pilotoCarrerasController", PilotoCarrerasController)
   .controller("pilotoDetalleController", PilotoDetalleController)
-  .controller("pilotoController", PilotoController);
+  .controller("pilotoController", PilotoController)
+  .controller("circuitosController", CircuitosController);
 
 app.config([
   "$urlRouterProvider",
@@ -68,6 +69,17 @@ app.config([
         url: "/leeme",
         templateUrl: "views/leeme.html"
         
+      })
+      .state("app.circuito", {
+        url: "/circuitos",
+        templateUrl: "views/circuitos.html",
+        controller: CircuitosController,
+        resolve: {
+          circuitosMundial: [
+            "ergastService",
+            (ergastService: IErgastService) => ergastService.getCircuitos()
+          ]
+        }
       });
   }
 ]);
