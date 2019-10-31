@@ -2,14 +2,14 @@ interface IPilotosControllerScope extends ng.IScope {
   vm: PilotosController;
 }
 class PilotosController implements ng.IController {
-  public driversList: IDriverStandings;
+  public driversList: Array<IDriverStandings> = [];
   public nameFilter: string = "";
 
   public static $inject = ["$scope", "clasificacionMundial"];
 
-  constructor(private $scope: IPilotosControllerScope, clasificacionMundial: IDriverStandings) {
+  constructor(private $scope: IPilotosControllerScope, clasificacionMundial: Array<IDriverStandings>) {
     
-    console.debug('hace watch???');
+    console.log('IPilotosControllerScope constructor');
     $scope.vm = this;
     this.driversList = clasificacionMundial;
 

@@ -4,9 +4,9 @@ interface IPilotoCarrerasScope extends angular.IScope {
 
 class PilotoCarrerasController implements ng.IController {
   public vm: PilotoCarrerasController;
-  public races: any[] = [];
+  public races: Array<IRace> = [];
   public static $inject = ["$scope", "carreras"];
-  constructor(private $scope: IPilotoCarrerasScope, carreras: any[]) {
+  constructor(private $scope: IPilotoCarrerasScope, carreras: Array<IRace>) {
     $scope.vm = this;
     this.races = carreras;
   }

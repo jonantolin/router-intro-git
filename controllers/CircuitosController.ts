@@ -7,7 +7,7 @@ class CircuitosController implements ng.IController {
   //public nameFilter: string = "";
 
   public titulo: string;
-  public circuitos = Array<ICircuito>();
+  public circuitos: Array<ICircuito> = [];
   public marcasMapa = [];
 
   public static $inject = ["$scope", "circuitosMundial"];
