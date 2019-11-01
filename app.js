@@ -6,7 +6,8 @@ app
     .controller("pilotoCarrerasController", PilotoCarrerasController)
     .controller("pilotoDetalleController", PilotoDetalleController)
     .controller("pilotoController", PilotoController)
-    .controller("circuitosController", CircuitosController);
+    .controller("circuitosController", CircuitosController)
+    .controller("circuitoDetalleController", CircuitoDetalleController);
 app.config([
     "$urlRouterProvider",
     "$stateProvider",
@@ -22,6 +23,10 @@ app.config([
                 clasificacionMundial: [
                     "ergastService",
                     function (ergastService) { return ergastService.getDrivers(); }
+                ],
+                circuitosMundial: [
+                    "ergastService",
+                    function (ergastService) { return ergastService.getCircuitos(); }
                 ]
             }
         })
@@ -66,7 +71,7 @@ app.config([
             url: "/leeme",
             templateUrl: "views/leeme.html"
         })
-            .state("app.circuito", {
+            .state("app.circuitos", {
             url: "/circuitos",
             templateUrl: "views/circuitos.html",
             controller: CircuitosController,
@@ -74,6 +79,21 @@ app.config([
                 circuitosMundial: [
                     "ergastService",
                     function (ergastService) { return ergastService.getCircuitos(); }
+                ]
+            }
+        })
+            .state("app.circuito", {
+            url: "/circuito/:id",
+            templateUrl: "views/circuitoDetalle.html",
+            controller: CircuitoDetalleController,
+            resolve: {
+                circuitoId: ["$stateParams", function ($stateParams) { return $stateParams.id; }],
+                circuito: [
+                    "circuitosMundial",
+                    "circuitoId",
+                    function (circuitosMundial, circuitoId) {
+                        return circuitosMundial.filter(function (circuito) { return circuito.circuitId == circuitoId; });
+                    }
                 ]
             }
         });

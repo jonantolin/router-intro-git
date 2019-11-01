@@ -18,7 +18,7 @@
             <tbody>
                 <tr ng-repeat="circuito in vm.circuitos | filter:busqueda | orderBy: 'circuitName':false">
                     <td>{{$index + 1}}</td>
-                    <td>{{circuito.circuitName}}</td>
+                    <td><a href="#!/app/circuito/{{circuito.circuitId}}">{{circuito.circuitName}}</a></td>
                     <td>{{circuito.Location.locality}}</td>
                     <td>{{circuito.Location.country}}</td>
                 </tr>
@@ -26,14 +26,15 @@
         </table>
     </div>
 
-   <!-- <div class="col-4">
+    <div class="col-4">
         <pre><code>
             {{vm.circuitos | json}}
         </code></pre>
     </div>
 
-    -->
+    
 
+    <!--
     <div class="col-4">
             <div id="map"></div>
             <script>
@@ -48,7 +49,7 @@
             <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
             async defer></script>
     </div>
-
+    -->
     
     
 </div>
