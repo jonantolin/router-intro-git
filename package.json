@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "angular": "^1.6.9"
+    "angular": "^1.8.3"
   },
   "devDependencies": {
-    "@types/angular": "^1.6.43",
+    "@types/angular": "^1.8.4",
     "@types/angular-ui-router": "^1.1.40",
     "@types/node": "^12.12.3",
     "http-server": "^0.11.1"
